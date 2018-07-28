@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/shimaore/base-p"
+    "url": "gitlab:shimaore/base-p"
   },
   "keywords": [
     "base",
