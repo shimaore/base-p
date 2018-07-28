@@ -11,6 +11,7 @@
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.!~'
     ]
+    # 2, 8, 10, 16, 32, 36, 58, 62, 64, 67
 
     class Base
       constructor: (alphabet = 62) ->
