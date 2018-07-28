@@ -18,6 +18,24 @@ base5.encode(7)     // returns '12'
 base5.decode('12')  // returns 7
 ```
 
+# Usage with BigInt
+
+```
+const Base = require('base-p')
+
+base62 = new Base(62)
+base62.encodeBig(2017n) // returns 'WX'
+base62.decodeBig('WX')  // returns 2017n
+
+base5 = new Base('01234')
+base5.encodeBig(7n)    // returns '12'
+base5.decodeBig('12')  // returns 7n
+```
+
+
+
+# Base
+
 The parameter for the constructor is a either a string containing the alphabet used for the conversion, or an integer representing the base for one of the [predefined alphabets](https://github.com/cryptocoinjs/base-x#alphabets):
 
 Base | Alphabet

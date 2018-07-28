@@ -21,25 +21,54 @@
 
         @base = @alphabet.length
         @reverse = new Map()
+        @reverseBig = new Map()
         for c,i in @alphabet
           @reverse.set c, i
+          @reverseBig.set c, BigInt i
 
       encode: (n) ->
+        base = @base
+        alphabet = @alphabet
         v = []
-        while n > @base
-          u = n %% @base
-          v.unshift @alphabet[u]
-          n //= @base
-        v.unshift @alphabet[n]
+        while n > base
+          u = n %% base
+          v.unshift alphabet[u]
+          n //= base
+        v.unshift alphabet[n]
+        v.join ''
+
+      encodeBig: (n) ->
+        base = BigInt @base
+        alphabet = @alphabet
+        v = []
+        while n > base
+          u = n % base
+          v.unshift alphabet[u]
+          n /= base
+        v.unshift alphabet[n]
         v.join ''
 
       decode: (t) ->
         v = 0
+        reverse = @reverse
+        base = @base
         for c in t
-          unless @reverse.has c
+          unless reverse.has c
             throw new Error "Invalid character `#{c}`"
-          u = @reverse.get c
-          v *= @base
+          u = reverse.get c
+          v *= base
+          v += u
+        v
+
+      decodeBig: (t) ->
+        v = BigInt 0
+        reverse = @reverseBig
+        base = BigInt @base
+        for c in t
+          unless reverse.has c
+            throw new Error "Invalid character `#{c}`"
+          u = reverse.get c
+          v *= base
           v += u
         v
 
